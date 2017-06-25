@@ -29,11 +29,6 @@ import { dirname } from 'path';
 function glslify$1(options) {
   if ( options === void 0 ) options = {};
 
-  var flags = Object.assign({}, {
-    removeComments: true,
-    removeDuplicateWhitespaces: true,
-  }, options);
-
   var filter = createFilter(
     options.include || '**/*.+(glsl|vert|frag)',
     options.exclude);
@@ -49,16 +44,6 @@ function glslify$1(options) {
         basedir: options.basedir || dirname(id),
         transform: options.transform,
       });
-      if (flags.removeComments) {
-        source = source
-          .replace(/[ \t]*\/\/.*\n/g, '')
-          .replace(/[ \t]*\/\*[\s\S]*?\*\//g, '');
-      }
-      if (flags.removeDuplicateWhitespaces) {
-        source = source
-          .replace(/\n{2,}/g, '\n')
-          .replace(/([ \t]){2,}/g, '$1');
-      }
       var transformedCode = "export default " + (JSON.stringify(source)) + ";";
       return {
         code: transformedCode,
