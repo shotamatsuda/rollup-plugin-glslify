@@ -27,11 +27,6 @@ import { createFilter } from 'rollup-pluginutils'
 import { dirname } from 'path'
 
 export default function glslify(options = {}) {
-  const flags = Object.assign({}, {
-    removeComments: true,
-    removeDuplicateWhitespaces: true,
-  }, options)
-
   const filter = createFilter(
     options.include || '**/*.+(glsl|vert|frag)',
     options.exclude)
@@ -43,20 +38,10 @@ export default function glslify(options = {}) {
       if (!filter(id)) {
         return null
       }
-      let source = compile(code, {
+      const source = compile(code, {
         basedir: options.basedir || dirname(id),
         transform: options.transform,
       })
-      if (flags.removeComments) {
-        source = source
-          .replace(/[ \t]*\/\/.*\n/g, '')
-          .replace(/[ \t]*\/\*[\s\S]*?\*\//g, '')
-      }
-      if (flags.removeDuplicateWhitespaces) {
-        source = source
-          .replace(/\n{2,}/g, '\n')
-          .replace(/([ \t]){2,}/g, '$1')
-      }
       const transformedCode = `export default ${JSON.stringify(source)};`
       return {
         code: transformedCode,
