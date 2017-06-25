@@ -1,5 +1,5 @@
 {
-  "name": "rollup-plugin-glslify",
+  "name": "@shotamatsuda/rollup-plugin-glslify",
   "version": "0.0.1",
   "description": "",
   "repository": "shotamatsuda/rollup-plugin-glslify",
@@ -25,11 +25,11 @@
     "rollup-pluginutils": "^2.0.1"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
+    "@takram/eslint-config-planck": "^0.1.7",
+    "chai": "^4.0.2",
     "eslint": "^3.19.0",
-    "eslint-config-planck": "github:takram-design-engineering/eslint-config-planck",
     "mocha": "^3.3.0",
-    "rollup": "^0.41.6",
+    "rollup": "^0.43.0",
     "rollup-plugin-buble": "^0.15.0"
   }
 }
