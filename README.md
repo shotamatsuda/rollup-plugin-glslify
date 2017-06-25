@@ -4,6 +4,14 @@ rollup-plugin-glslify
 [![License](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat
 )](http://mit-license.org)
 
+## Getting Started
+
+### Installing
+
+```sh
+npm install @shotamatsuda/rollup-plugin-glslify
+```
+
 ## License
 
 The MIT License
