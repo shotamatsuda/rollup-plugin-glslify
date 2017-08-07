@@ -25,7 +25,7 @@
 import buble from 'rollup-plugin-buble'
 
 export default {
-  entry: 'src/index.js',
+  entry: 'index.module.js',
   plugins: [
     buble(),
   ],
@@ -38,10 +38,6 @@ export default {
     {
       format: 'cjs',
       dest: 'index.js',
-    },
-    {
-      format: 'es',
-      dest: 'index.module.js',
     },
   ],
 }

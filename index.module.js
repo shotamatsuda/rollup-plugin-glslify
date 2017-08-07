@@ -1,7 +1,3 @@
-import { compile } from 'glslify';
-import { createFilter } from 'rollup-pluginutils';
-import { dirname } from 'path';
-
 //
 //  The MIT License
 //
@@ -26,25 +22,27 @@ import { dirname } from 'path';
 //  DEALINGS IN THE SOFTWARE.
 //
 
-function glslify$1(options) {
-  if ( options === void 0 ) options = {};
+import { compile } from 'glslify'
+import { createFilter } from 'rollup-pluginutils'
+import { dirname } from 'path'
 
-  var filter = createFilter(
+export default function glslify(options = {}) {
+  const filter = createFilter(
     options.include || '**/*.+(glsl|vert|frag)',
-    options.exclude);
+    options.exclude)
 
   return {
     name: 'glslify',
 
-    transform: function transform(code, id) {
+    transform(code, id) {
       if (!filter(id)) {
         return null
       }
-      var source = compile(code, {
+      const source = compile(code, {
         basedir: options.basedir || dirname(id),
         transform: options.transform,
-      });
-      var transformedCode = "export default " + (JSON.stringify(source)) + ";";
+      })
+      const transformedCode = `export default ${JSON.stringify(source)};`
       return {
         code: transformedCode,
         map: { mappings: '' },
@@ -52,5 +50,3 @@ function glslify$1(options) {
     },
   }
 }
-
-export default glslify$1;
