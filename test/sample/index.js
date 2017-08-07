@@ -3,7 +3,7 @@ import fragmentShader from './sample.frag'
 import vertexShader from './sample.vert'
 import transform from './transform.glsl'
 
-export {
+export default {
   module,
   fragmentShader,
   vertexShader,

@@ -22,7 +22,6 @@
 //  DEALINGS IN THE SOFTWARE.
 //
 
-const assert = require('assert')
 const buble = require('rollup-plugin-buble')
 const chai = require('chai')
 const glslify = require('..')
@@ -33,14 +32,15 @@ const expect = chai.expect
 process.chdir(__dirname)
 
 function execute(bundle) {
-  const generated = bundle.generate({
+  return bundle.generate({
     format: 'cjs',
+  }).then(generated => {
+    // eslint-disable-next-line no-new-func
+    const fn = new Function('module', 'exports', 'require', generated.code)
+    const module = { exports: {} }
+    fn(module, module.exports, require)
+    return module
   })
-  // eslint-disable-next-line no-new-func
-  const fn = new Function('module', 'exports', 'assert', generated.code)
-  const module = { exports: {} }
-  fn(module, module.exports, assert)
-  return module
 }
 
 describe('rollup-plugin-glslify', () => {
