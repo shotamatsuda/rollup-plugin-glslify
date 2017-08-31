@@ -21,15 +21,24 @@
     "test": "mocha"
   },
   "dependencies": {
+    "glsl-deparser": "^1.0.0",
+    "glsl-parser": "^2.0.0",
+    "glsl-tokenizer": "^2.1.2",
     "glslify": "^6.0.2",
     "rollup-pluginutils": "^2.0.1"
   },
   "devDependencies": {
-    "@takram/eslint-config-planck": "^0.1.7",
+    "@takram/eslint-config-planck": "^0.2.1",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
     "chai": "^4.1.1",
-    "eslint": "^3.19.0",
+    "eslint": "^4.3.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
     "mocha": "^3.5.0",
-    "rollup": "^0.45.2",
+    "rollup": "^0.49.2",
+    "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-buble": "^0.15.0"
   }
 }
