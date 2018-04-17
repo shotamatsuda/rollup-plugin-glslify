@@ -16,7 +16,9 @@ function minify(glsl) {
   return new Promise((resolve, reject) => {
     let result = '';
     const stream$$1 = new stream.Readable();
-    stream$$1.pipe(tokenizer()).pipe(parser()).pipe(deparser(false)).on('data', buffer => result += buffer.toString()).on('end', () => resolve(result));
+    stream$$1.pipe(tokenizer()).pipe(parser()).pipe(deparser(false)).on('data', buffer => {
+      result += buffer.toString();
+    }).on('end', () => resolve(result));
     stream$$1.push(glsl);
     stream$$1.push(null);
   });

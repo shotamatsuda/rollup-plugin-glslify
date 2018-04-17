@@ -9,7 +9,7 @@ import deparser from 'glsl-deparser'
 import parser from 'glsl-parser'
 import tokenizer from 'glsl-tokenizer/stream'
 
-function minify(glsl) {
+function minify (glsl) {
   return new Promise((resolve, reject) => {
     let result = ''
     const stream = new Readable()
@@ -17,14 +17,14 @@ function minify(glsl) {
       .pipe(tokenizer())
       .pipe(parser())
       .pipe(deparser(false))
-      .on('data', buffer => result += buffer.toString())
+      .on('data', buffer => { result += buffer.toString() })
       .on('end', () => resolve(result))
     stream.push(glsl)
     stream.push(null)
   })
 }
 
-export default function glslify(options = {}) {
+export default function glslify (options = {}) {
   const filter = createFilter(
     options.include || '**/*.+(glsl|vert|frag)',
     options.exclude)
@@ -32,13 +32,13 @@ export default function glslify(options = {}) {
   return {
     name: 'glslify',
 
-    async transform(code, id) {
+    async transform (code, id) {
       if (!filter(id)) {
         return null
       }
       let source = compile(code, {
         basedir: options.basedir || dirname(id),
-        transform: options.transform,
+        transform: options.transform
       })
       if (options.minify) {
         const minified = await minify(source)
@@ -51,8 +51,8 @@ export default function glslify(options = {}) {
       const transformedCode = `export default ${JSON.stringify(source)};`
       return {
         code: transformedCode,
-        map: { mappings: '' },
+        map: { mappings: '' }
       }
-    },
+    }
   }
 }
