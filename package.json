@@ -1,6 +1,6 @@
 {
   "name": "@shotamatsuda/rollup-plugin-glslify",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "repository": "shotamatsuda/rollup-plugin-glslify",
   "main": "index.js",
