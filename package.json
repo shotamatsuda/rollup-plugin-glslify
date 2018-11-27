@@ -1,6 +1,6 @@
 {
   "name": "@shotamatsuda/rollup-plugin-glslify",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "license": "MIT",
   "description": "",
   "repository": "shotamatsuda/rollup-plugin-glslify",
