@@ -29,7 +29,7 @@
     "glsl-deparser": "^1.0.0",
     "glsl-parser": "^2.0.0",
     "glsl-tokenizer": "^2.1.2",
-    "glslify": "^6.1.1",
+    "glslify": "^7.0.0",
     "rollup-pluginutils": "^2.0.1"
   },
   "devDependencies": {
