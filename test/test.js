@@ -1,4 +1,4 @@
-// The MIT License
+// MIT License
 // Copyright (C) 2016-Present Shota Matsuda
 
 /* eslint-env mocha */
@@ -28,7 +28,7 @@ function execute (bundle) {
 describe('rollup-plugin-glslify', () => {
   it('imports .glsl, .frag and .vert files as strings', () => {
     return rollup.rollup({
-      entry: 'sample/index.js',
+      input: 'sample/index.js',
       plugins: [
         glslify(),
         buble()

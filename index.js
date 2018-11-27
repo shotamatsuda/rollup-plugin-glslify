@@ -10,7 +10,7 @@ var deparser = _interopDefault(require('glsl-deparser'));
 var parser = _interopDefault(require('glsl-parser'));
 var tokenizer = _interopDefault(require('glsl-tokenizer/stream'));
 
-// The MIT License
+// MIT License
 
 function minify(glsl) {
   return new Promise((resolve, reject) => {
@@ -26,7 +26,6 @@ function minify(glsl) {
 
 function glslify$1(options = {}) {
   const filter = rollupPluginutils.createFilter(options.include || '**/*.+(glsl|vert|frag)', options.exclude);
-
   return {
     name: 'glslify',
 
@@ -34,24 +33,31 @@ function glslify$1(options = {}) {
       if (!filter(id)) {
         return null;
       }
+
       let source = glslify.compile(code, {
         basedir: options.basedir || path.dirname(id),
         transform: options.transform
       });
+
       if (options.minify) {
         const minified = await minify(source);
+
         if (!minified) {
           console.warn('Failed to minify:', id);
         } else {
           source = minified;
         }
       }
+
       const transformedCode = `export default ${JSON.stringify(source)};`;
       return {
         code: transformedCode,
-        map: { mappings: '' }
+        map: {
+          mappings: ''
+        }
       };
     }
+
   };
 }
 

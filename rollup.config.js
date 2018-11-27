@@ -8,7 +8,7 @@ export default {
   plugins: [
     babel({
       presets: [
-        ['env', {
+        ['@babel/env', {
           targets: { node: 'current' },
           modules: false
         }]
