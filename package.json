@@ -1,13 +1,17 @@
 {
   "name": "@shotamatsuda/rollup-plugin-glslify",
-  "version": "0.1.2",
+  "version": "0.1.3",
+  "license": "MIT",
   "description": "",
   "repository": "shotamatsuda/rollup-plugin-glslify",
+  "bugs": "https://github.com/shotamatsuda/rollup-plugin-glslify/issues",
+  "homepage": "https://github.com/shotamatsuda/rollup-plugin-glslify",
+  "author": {
+    "name": "Shota Matsuda",
+    "email": "shota@takram.com"
+  },
   "main": "index.js",
   "module": "index.module.js",
-  "author": "Shota Matsuda",
-  "license": "MIT",
-  "homepage": "https://github.com/shotamatsuda/rollup-plugin-glslify",
   "files": [
     "package.json",
     "README.md",
